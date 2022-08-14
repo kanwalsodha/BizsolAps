@@ -1,0 +1,83 @@
+﻿@using BO
+@model IList<BO.Developer>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Home Page";
+}
+<div class="container">
+    <h2>Developer List</h2>
+    <button type="button" class="btn btn-primary"
+            data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">
+        Create 
+    </button><br /><br />
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Age
+                </th>
+                <th>
+                    Fields 1
+                </th>
+                <th>
+                    Fields 2
+                </th>
+                <th>
+                    Fields 3
+                </th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+            @foreach (Developer developerList in Model)
+            {
+                <tr>
+                    <td>@developerList.Name</td>
+                    <td>@developerList.JobTitle</td>
+                    <td>@developerList.Age</td>
+                    <td>@developerList.Fields1</td>
+                    <td>@developerList.Fields2</td>
+                    <td>@developerList.Fields3</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <button type="button" class="btn btn-primary " id="btnAddMore" onclick="return AddNewfields();">Add More</button>
+            </div>
+            <div class="modal-body" id="modelBodyID">
+                <form>
+                    <div class="form-group">
+                        <div class="row" id="row1">
+                            <div class=col-4>
+                                <label for="Name">Name</label>
+                                <input type="text" class="form-control" id="Name" value="Name" placeholder="Name" />
+                            </div>
+                            <div class=col-4>
+                                <label for="Age">Age</label>
+                                <input type="text" class="form-control" id="Age" value="30" placeholder="Age" />
+                            </div>
+                            <div class=col-4>
+                                <label for="Country">Title</label>
+                                <input type="text" class="form-control" id="jobTitle" value="Developer 1" placeholder="Job Title" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnAddSave" onclick="return SaveDataBase();">Save Database</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
